@@ -46,23 +46,6 @@ The project is organized into two main directories:
 -   `backend/`: Contains all the Python code for the API, including routers, database models, and schemas.
 -   `frontend/`: Contains all the static files for the user interface (HTML, CSS, JavaScript).
 
-├── backend/
-│   ├── main.py            # Main FastAPI application entry point
-│   ├── database.py        # SQLAlchemy database engine and session
-│   ├── models.py          # Database models (User, Assignment, Submission)
-│   ├── schemas.py         # Pydantic schemas for data validation
-│   └── routers/           # API endpoint definitions
-│       ├── init.py
-│       ├── users.py
-│       └── assignments.py
-├── frontend/
-│   ├── index.html         # Main application page
-│   ├── styles.css         # Styling for the application
-│   └── js/
-│       └── script.js      # Frontend logic and API calls
-└── README.md
-
-
 ## ✨ Features
 
 -   **User Authentication**: Secure signup and login with role-based access control (Student/Teacher).
