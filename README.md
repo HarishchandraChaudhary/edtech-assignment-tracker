@@ -1,90 +1,95 @@
-EdTech Assignment Tracker
-This is a simple full-stack web application designed to help teachers manage assignments and students submit their work. The application features user authentication with two distinct roles: Teacher and Student.
+# EdTech Assignment Tracker
 
-Features
-Teacher
-Authentication: Secure signup and login to access the teacher dashboard.
+A simple, full-stack web application for managing and submitting assignments for teachers and students.
 
-Create Assignments: Easily create new assignments with a title, a detailed description, and a due date.
+<br>
 
-View Submissions: Access and view all submissions for any created assignment.
+## 🚀 Getting Started
 
-Student
-Authentication: Secure signup and login to access the student dashboard.
+Follow these instructions to get a copy of the project up and running on your local machine.
 
-View Assignments: See all assignments posted by teachers.
+### Prerequisites
 
-Submit Assignments: Submit assignments by providing a text response and optionally uploading a file.
+- **Python 3.8+**: The backend is built with Python.
+- **Node.js & npm (Optional)**: If you were to add frontend dependencies in the future.
+- **A modern web browser**: To run the frontend.
 
-Technologies Used
-Backend: Python with the FastAPI framework.
+### Installation
 
-Database: SQLAlchemy with SQLite for data persistence.
+1.  **Clone the repository** (or set up the files as discussed):
+    ```bash
+    git clone <your-repo-url>
+    cd edtech-assignment-tracker
+    ```
 
-Authentication: JWT for secure token-based authentication.
+2.  **Backend Setup**:
+    Navigate to the `backend` directory and install the required Python packages.
+    ```bash
+    cd backend/
+    pip install "fastapi[all]" "uvicorn[standard]" sqlalchemy "python-multipart" passlib[bcrypt] python-jose[cryptography]"
+    ```
 
-Frontend: Plain HTML, CSS, and JavaScript.
+3.  **Run the Backend Server**:
+    From the `backend` directory, start the FastAPI server with auto-reload for development.
+    ```bash
+    uvicorn main:app --reload
+    ```
+    The API will be available at `http://127.0.0.1:8000`.
 
-UI/UX: Dynamic content loading and a responsive design without the need for external frameworks.
+4.  **Frontend Setup**:
+    The frontend is a static application. Simply open the `index.html` file in your preferred web browser.
 
-Setup and Installation
-Prerequisites
-Python 3.8+
+## 📁 Project Structure
 
-pip (Python package installer)
+The project is organized into two main directories:
 
-1. Backend Setup
-Clone the repository (if applicable) or create the following directory structure:
+-   `backend/`: Contains all the Python code for the API, including routers, database models, and schemas.
+-   `frontend/`: Contains all the static files for the user interface (HTML, CSS, JavaScript).
 
-.
 ├── backend/
-│   ├── main.py
-│   ├── database.py
-│   ├── models.py
-│   ├── schemas.py
-│   └── routers/
-│       ├── __init__.py
+│   ├── main.py            # Main FastAPI application entry point
+│   ├── database.py        # SQLAlchemy database engine and session
+│   ├── models.py          # Database models (User, Assignment, Submission)
+│   ├── schemas.py         # Pydantic schemas for data validation
+│   └── routers/           # API endpoint definitions
+│       ├── init.py
 │       ├── users.py
 │       └── assignments.py
 ├── frontend/
-│   ├── index.html
-│   ├── styles.css
+│   ├── index.html         # Main application page
+│   ├── styles.css         # Styling for the application
 │   └── js/
-│       └── script.js
+│       └── script.js      # Frontend logic and API calls
 └── README.md
-Install dependencies in your backend directory:
 
-Bash
 
-pip install fastapi "uvicorn[standard]" sqlalchemy "python-multipart" passlib[bcrypt] python-jose[cryptography]
-Run the application:
-From the backend directory, start the server using Uvicorn.
+## ✨ Features
 
-Bash
+-   **User Authentication**: Secure signup and login with role-based access control (Student/Teacher).
+-   **Assignment Management**: Teachers can create, view, and manage assignments.
+-   **Assignment Submission**: Students can submit assignments with a text response and an optional file upload.
+-   **File Storage**: Submitted files are stored on the server.
+-   **Dynamic UI**: The frontend dynamically loads content and switches between views without page reloads.
+-   **Modern Feedback**: User actions (e.g., submission success) are confirmed with clean toast notifications instead of distracting alerts.
 
-uvicorn main:app --reload
-The server will run on http://127.0.0.1:8000.
+## 🖥️ API Endpoints
 
-2. Frontend Setup
-The frontend is a static web application. You do not need a separate server to run it.
+The backend exposes a RESTful API. Below are the primary endpoints:
 
-Open index.html in your web browser.
+| Endpoint                          | Method | Description                                    | Role       |
+| --------------------------------- | ------ | ---------------------------------------------- | ---------- |
+| `/api/v1/auth/signup`             | `POST`   | Creates a new user account.                    | Public     |
+| `/api/v1/auth/token`              | `POST`   | Authenticates a user and returns a JWT token.  | Public     |
+| `/api/v1/users/me`                | `GET`    | Retrieves the current authenticated user's info. | Authenticated |
+| `/api/v1/assignments/`            | `POST`   | Creates a new assignment.                      | Teacher    |
+| `/api/v1/assignments/`            | `GET`    | Retrieves all assignments.                     | Authenticated |
+| `/api/v1/assignments/{id}/submit` | `POST`   | Submits an assignment for a specific ID.       | Student    |
+| `/api/v1/assignments/{id}/submissions` | `GET`    | Views all submissions for an assignment.     | Teacher    |
 
-Usage
-Open index.html in your web browser.
+## 🤝 Contributing
 
-Sign Up: Create a new account and select your role (Teacher or Student).
+Contributions are welcome! If you find a bug or have a feature request, please feel free to open an issue or submit a pull request.
 
-Login: Use your newly created credentials to log in.
+## 📄 License
 
-Teacher Dashboard:
-
-Use the "Create New Assignment" form to post an assignment.
-
-View your assignments and click "View Submissions" to see student work.
-
-Student Dashboard:
-
-The "Available Assignments" section will display all current assignments.
-
-Click the "Submit" button on an assignment to submit your work via text or file upload.
+This project is open source and available under the MIT License.
