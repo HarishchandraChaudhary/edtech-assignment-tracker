@@ -18,7 +18,7 @@ Follow these instructions to get a copy of the project up and running on your lo
 
 1.  **Clone the repository** (or set up the files as discussed):
     ```bash
-    git clone <your-repo-url>
+    git clone https://github.com/HarishchandraChaudhary/edtech-assignment-tracker.git
     cd edtech-assignment-tracker
     ```
 
