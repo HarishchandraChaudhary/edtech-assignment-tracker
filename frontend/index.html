@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EdTech Assignment Tracker</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>EdTech Assignment Tracker</h1>
+        <button id="logout-btn" style="display: none;">Logout</button>
+    </header>
+    <main>
+        <div id="login-signup-view" class="view">
+            <h2>Login or Sign Up</h2>
+            <form id="auth-form">
+                <input type="text" id="username" placeholder="Username" required>
+                <input type="password" id="password" placeholder="Password" required>
+                <select id="role">
+                    <option value="student">Student</option>
+                    <option value="teacher">Teacher</option>
+                </select>
+                <button type="button" onclick="handleAuth('login')">Login</button>
+                <button type="button" onclick="handleAuth('signup')">Sign Up</button>
+            </form>
+        </div>
+
+        <div id="teacher-view" class="view" style="display: none;">
+            <h2>Teacher Dashboard</h2>
+            <section>
+                <h3>Create New Assignment</h3>
+                <form id="create-assignment-form">
+                    <input type="text" id="assignment-title" placeholder="Assignment Title" required>
+                    <textarea id="assignment-description" placeholder="Description" required></textarea>
+                    <input type="date" id="assignment-due-date" required>
+                    <button type="submit">Create Assignment</button>
+                </form>
+            </section>
+            <section>
+                <h3>My Assignments</h3>
+                <div id="teacher-assignments-list"></div>
+            </section>
+        </div>
+
+        <div id="student-view" class="view" style="display: none;">
+            <h2>Student Dashboard</h2>
+            <h3>Available Assignments</h3>
+            <div id="student-assignments-list"></div>
+        </div>
+
+        <div id="submission-modal" class="modal" style="display: none;">
+            <div class="modal-content">
+                <span class="close-button">&times;</span>
+                <h3>Submit Assignment</h3>
+                <p id="modal-assignment-title"></p>
+                <form id="submit-assignment-form">
+                    <textarea id="submission-text" placeholder="Your submission text" required></textarea>
+                    <input type="file" id="submission-file">
+                    <button type="submit">Submit</button>
+                </form>
+            </div>
+        </div>
+    </main>
+
+    <div id="toast-container"></div>
+
+    <script src="script.js"></script>
+</body>
+</html>
